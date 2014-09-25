@@ -26,7 +26,7 @@
 (define (json-connect host port)
   (let-values (((in out) (tcp-connect host port)))
     (let ((inch (make-channel)))
-      (producing (socket (json-socket in out inch))
+      (producing ((socket (json-socket in out inch)))
         (thread (λ ()
                   (loop
                     (with-handlers ((void void))
